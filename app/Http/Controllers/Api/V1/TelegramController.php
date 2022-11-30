@@ -41,7 +41,7 @@ class TelegramController extends Controller
             'path' => storage_path('logs/webhook.log'),
         ])->info(json_decode(json_encode($request->input()), true));
 
-        Telegram::commandsHandler(true);//开启关键字回复
+//        Telegram::commandsHandler(true);//开启关键字回复
 //        $this->webhookService->add(json_decode(json_encode($request->input())));
 
 //        $updates = Telegram::getWebhookUpdate();
