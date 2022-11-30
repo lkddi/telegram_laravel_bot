@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class TAdminUser extends Model
+{
+    use HasFactory;
+    /**
+     * 允许所有字段 可以批量填充
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+}
