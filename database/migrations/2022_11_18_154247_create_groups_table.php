@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('type')->nullable()->comment('类型');//“private”, “group”, “supergroup” or “channel”
             $table->string('invite_link')->nullable()->comment('链接');
             $table->string('status')->nullable()->comment('群属性');
-            $table->tinyInteger('open')->default(1)->comment('总开关');
+            $table->tinyInteger('open')->default(0)->comment('总开关');
             $table->string('vmethod')->default('active')->comment('验证方式');
             $table->integer('overtime')->default(300)->comment('超时时间');
             $table->string('verror')->default('banChatSenderChat')->comment('验证错误处理方式');

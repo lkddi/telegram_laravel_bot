@@ -14,4 +14,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
     $router->resource('response', 'ResponseController');
+    $router->resource('groups', 'GroupController');
 });
