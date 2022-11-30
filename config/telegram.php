@@ -32,7 +32,8 @@ return [
         'mybot' => [
             'token'               => env('TELEGRAM_BOT_TOKEN', ''),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
-            'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'https://bot.nielove.net/api/v1/telegram/webhook?access_token=c35459f962a5fa4c5c04a3f6ae920025'),
+            'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', ''),
+            'admin'         => env('TELEGRAM_ADMIN_ID', ''),
             'commands'            => [
                 //Acme\Project\Commands\MyTelegramBot\BotCommand::class
 //                App\Console\Telegram\Start::class,

@@ -45,7 +45,7 @@ class My_chat_member
             $text = $group['title'] . ':机器人为管理员，同步群信息';
             $GroupService->new($group);
             $TAdmin->updateAdmin($group['chat']['id']);
-            Telegram::sendMessage(['chat_id' => '690564235', 'text' => $text]);
+            Telegram::sendMessage(['chat_id' => config('telegram.bots.mybot.admin'), 'text' => $text]);
             return true;
         }
 
