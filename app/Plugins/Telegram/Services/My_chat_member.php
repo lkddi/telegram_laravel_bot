@@ -24,14 +24,14 @@ class My_chat_member
         $group = $this->formatMessage($data);
         if ($group['type'] != 'supergroup') {//非超级群，不进行工作
             $text = $group['title'] . ':普通群，不工作';
-            Telegram::sendMessage(['chat_id' => '690564235', 'text' => $text]);
+            Telegram::sendMessage(['chat_id' => config('telegram.bots.mybot.admin'), 'text' => $text]);
             return true;
         }
 
         if ($group['status'] == 'left') {//机器人被T了
             $text = $group['title'] . ':我被T了，马上删除数据库';
             $GroupService->delGroup($group);
-            Telegram::sendMessage(['chat_id' => '690564235', 'text' => $text]);
+            Telegram::sendMessage(['chat_id' => config('telegram.bots.mybot.admin'), 'text' => $text]);
             return true;
         } elseif ($group['status'] == 'member') {//机器人权限为 普通用户
             $text = $group['title'] . ':机器人为普通用户，不工作';
@@ -39,7 +39,7 @@ class My_chat_member
                 $GroupService->delGroup($group);
                 $text = $group['title'] . ':机器人权限被收回，删除数据，退群';
             }
-            Telegram::sendMessage(['chat_id' => '690564235', 'text' => $text]);
+            Telegram::sendMessage(['chat_id' => config('telegram.bots.mybot.admin'), 'text' => $text]);
             return true;
         } elseif ($group['status'] == 'administrator') {//机器人权限为管理员
             $text = $group['title'] . ':机器人为管理员，同步群信息';
