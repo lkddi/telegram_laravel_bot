@@ -13,6 +13,7 @@ class GroupService
 
     public function new(array $data)
     {
+        $data['open'] = config('telegram.bots.mybot.open');
         $chat = Group::updateOrCreate(['chat_id' => $data['chat_id']], $data);
     }
 

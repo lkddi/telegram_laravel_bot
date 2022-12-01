@@ -34,7 +34,7 @@ $ cp .env.example .env
 ```
 APP_ENV=production  #线上模式
 APP_URL=https   #你的https 网址
-TELEGRAM_BOT_TOKEN=  #你的机器人token
+
 ```
 
 ######  2.生成秘钥：
@@ -50,3 +50,6 @@ $ php artisan jwt:secret
   php artisan admin:install
   php artisan db:seed --class=AdminMenu
 ```
+
+###### 4.登录后台进行Bot设置
+

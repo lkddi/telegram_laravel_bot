@@ -45,10 +45,9 @@ class Chat_member
                     'parse_mode' => 'Markdown',  // string     - (Optional). Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
                     'reply_markup' => json_encode($a, true),  // object     - (Optional). One of either InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
                 ];
-                $deltime = 300;
                 $req = Telegram::sendMessage($params);
                 if ($req) {
-                    ResponseService::create($req, $deltime);
+                    ResponseService::create($req, config('telegram.bots.mybot.deltime'));
                 }
                 $Tuser->restrictChatMember($group['chat_id'], $user['id'], 0);
             }
@@ -73,10 +72,14 @@ class Chat_member
             $text .= $this->fullname() . ':被执行操作：从' . $user['old_status'] . '到' . $user['new_status'];
         }
         $text .= date("Y-m-d H:i:s", $group['date']);
-        $req = Telegram::sendMessage(['chat_id' => '690564235', 'text' => $text]);
-        if ($req) {
-            ResponseService::create($req, $deltime);
+
+        if (config('telegram.bots.mybot.notice')){
+            $req = Telegram::sendMessage(['chat_id' => '690564235', 'text' => $text]);
+            if ($req) {
+                ResponseService::create($req, $deltime);
+            }
         }
+
         return true;
     }
 

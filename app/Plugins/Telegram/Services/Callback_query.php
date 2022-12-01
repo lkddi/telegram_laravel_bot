@@ -105,6 +105,11 @@ class Callback_query
         } catch (\Exception $e) {
 
         }
+        $group = Group::where('chat_id',$this->chatid)->first();
+        if ($group) {
+            $group->increment('passedconut');
+            $group->save();
+        }
         return true;
     }
 }

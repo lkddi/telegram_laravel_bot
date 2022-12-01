@@ -19,6 +19,7 @@ class TUserService
         $group = Group::where('chat_id', $datas['chat_member']['chat']['id'])->first();
 
         if ($group) {
+//            $group->increment()
             return $chat = $group->user()->updateOrCreate(['user_id' => $data['id']], $user);
         }
 

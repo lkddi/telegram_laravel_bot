@@ -24,12 +24,12 @@ class SetBotController extends Controller
         $content->row(function (Row $row) {
             $type = request('_t', 1);
             $tab = new Tab();
-            $tab->add('Bot设置', $this->form1());
+            $tab->add('基础设置', $this->form1());
 
             $row->column(12, $tab->withCard());
         });
         return $content
-            ->header('Form');
+            ->header('Bot设置');
     }
 
     protected function form1()
@@ -42,8 +42,8 @@ class SetBotController extends Controller
 
         $form = new Form();
         $form->action(request()->fullUrl());
-        $form->text('form1.TELEGRAM_BOT_TOKEN', 'Telegram bot Token')->default(config('telegram.bots.mybot.token'))->help('.env文件里修改');
-        $form->text('form1.TELEGRAM_ADMIN_ID', '你的userid')->default(config('telegram.bots.mybot.admin'))->help('.env文件里修改');
+        $form->text('form1.TELEGRAM_BOT_TOKEN', 'Telegram bot Token')->default(config('telegram.bots.mybot.token'));
+        $form->text('form1.TELEGRAM_ADMIN_ID', '你的userid')->default(config('telegram.bots.mybot.admin'));
         $form->text('form1.TELEGRAM_WEBHOOK_URL', '你的userid')->default($url);
         $form->switch('form1.TELEGRAM_GROUP_NOTICE', '入群通知你')->default(config('telegram.bots.mybot.notice'));
         $form->number('form1.TELEGRAM_DELTIME', '消息删除时间')->default(config('telegram.bots.mybot.deltime'));

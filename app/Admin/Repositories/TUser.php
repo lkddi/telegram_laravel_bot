@@ -13,4 +13,6 @@ class TUser extends EloquentRepository
      * @var string
      */
     protected $eloquentClass = Model::class;
+
+
 }

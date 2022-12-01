@@ -17,20 +17,20 @@ class TAdminUserController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new TAdminUser(), function (Grid $grid) {
+        return Grid::make(new TAdminUser(['group']), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('group_id');
+            $grid->column('group.title');
             $grid->column('user_id');
             $grid->column('first_name');
             $grid->column('last_name');
             $grid->column('username');
             $grid->column('status');
-            $grid->column('created_at');
+//            $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -72,7 +72,7 @@ class TAdminUserController extends AdminController
             $form->text('last_name');
             $form->text('username');
             $form->text('status');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });
