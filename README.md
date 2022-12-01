@@ -47,6 +47,6 @@ $ php artisan jwt:secret
 ###### 3.初始化数据库：
 
 ```php
-$ php artisan migrate --seed
   php artisan admin:install
+  php artisan db:seed --class=AdminMenu
 ```

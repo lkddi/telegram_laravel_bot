@@ -17,4 +17,5 @@ Route::group([
     $router->resource('groups', 'GroupController');
     $router->resource('tadmins', 'TAdminUserController');
     $router->resource('tusers', 'TUserController');
+    $router->resource('setbot', 'SetBotController');
 });

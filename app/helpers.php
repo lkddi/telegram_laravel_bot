@@ -68,7 +68,8 @@ function checkAdmin($chat_id, $user_id)
     return false;
 }
 
-function escapeMarkDown($data) {
+function escapeMarkDown($data)
+{
     return Str::of($data)
         ->swap([
             '.' => '\\.',
@@ -80,6 +81,30 @@ function escapeMarkDown($data) {
         ]);
 }
 
-function getMarkDownUserUrl($userName, $userId) {
+function getMarkDownUserUrl($userName, $userId)
+{
     return "[" . $userName . "](tg://user?id=" . $userId . ")";
+}
+
+
+/**
+ * 修改配置文件
+ * @param array $data
+ * @return void
+ */
+function aseditEnv(array $data)
+{
+    $envPath = base_path() . DIRECTORY_SEPARATOR . '.env';
+    $contentArray = collect(file($envPath, FILE_IGNORE_NEW_LINES));
+    $contentArray->transform(function ($item) use ($data){
+        foreach ($data as $key => $value){
+            if(str_contains($item, $key)){
+                return $key . '=' . $value;
+            }
+        }
+        return $item;
+    });
+    $content = implode("\n", $contentArray->toArray());
+    Log::info($content);
+    \File::put($envPath, $content);
 }

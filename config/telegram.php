@@ -34,6 +34,9 @@ return [
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', ''),
             'admin'         => env('TELEGRAM_ADMIN_ID', ''),
+            'deltime'         => env('TELEGRAM_DELTIME', '300'),
+            'open'         => env('TELEGRAM_GROUP_OPEN', '0'),
+            'notice'         => env('TELEGRAM_GROUP_NOTICE', '0'),
             'commands'            => [
                 //Acme\Project\Commands\MyTelegramBot\BotCommand::class
 //                App\Console\Telegram\Start::class,

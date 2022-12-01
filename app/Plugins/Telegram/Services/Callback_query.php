@@ -54,6 +54,7 @@ class Callback_query
         } else {
             if ($this->check_userid != $this->userid) return true;
         }
+
         \Log::info('到这里了');
         $group = Group::where('chat_id', $this->chatid)->first();
         if (!$group || !$group->open) {

@@ -99,7 +99,7 @@ class AdminMenu extends Seeder
                 'order'         => 1,
                 'title'         => 'bot设置',
                 'icon'          => 'fa-product-hunt',
-                'uri'           => 'botset',
+                'uri'           => 'setbot',
                 'created_at'    => $createdAt,
             ],
             [
