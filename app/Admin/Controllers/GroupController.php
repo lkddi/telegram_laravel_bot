@@ -20,18 +20,25 @@ class GroupController extends AdminController
         return Grid::make(new Group(), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('chat_id');
-            $grid->column('title');
+            $grid->column('title')->substr(1, 10);
             $grid->column('username');
-            $grid->column('type');
-            $grid->column('status');
-            $grid->column('open');
-            $grid->column('created_at');
+            $grid->column('type')->using(['supergroup' => '超级群', 'group' => '普通群', 'private'=>'私密群']);
+            $grid->column('status')->using(['administrator' => '未处理', 2 => '已处理']);
+            $grid->column('open')->bool();
+            $grid->column('passedconut');
+//            $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+                $filter->equal('chat_id');
+                $filter->equal('title');
+                $filter->equal('username');
+
             });
+
+            $grid->quickSearch(['title', 'chat_id', 'username','type']);
+
         });
     }
 
@@ -72,7 +79,7 @@ class GroupController extends AdminController
             $form->text('type');
             $form->text('status');
             $form->text('open');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });

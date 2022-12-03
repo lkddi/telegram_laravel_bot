@@ -30,8 +30,16 @@ class TUserController extends AdminController
 
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
+                $filter->equal('group.title');
+                $filter->equal('user_id');
+                $filter->equal('first_name');
+                $filter->equal('last_name');
+                $filter->equal('username');
+                $filter->equal('state');
 
             });
+            $grid->quickSearch(['group.title', 'user_id', 'username','first_name']);
+
         });
     }
 

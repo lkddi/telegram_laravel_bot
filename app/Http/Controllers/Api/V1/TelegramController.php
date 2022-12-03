@@ -36,10 +36,11 @@ class TelegramController extends Controller
     {
         if (isset($request->message)) return true;
         if (isset($request->edited_message)) return true;
-        Log::build([
-            'driver' => 'single',
-            'path' => storage_path('logs/webhook.log'),
-        ])->info(json_decode(json_encode($request->input()), true));
+
+//        Log::build([
+//            'driver' => 'single',
+//            'path' => storage_path('logs/webhook.log'),
+//        ])->info(json_decode(json_encode($request->input()), true));
 
 //        Telegram::commandsHandler(true);//开启关键字回复
 //        $this->webhookService->add(json_decode(json_encode($request->input())));

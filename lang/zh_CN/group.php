@@ -1,7 +1,7 @@
-<?php 
+<?php
 return [
     'labels' => [
-        'Group' => 'Group',
+        'Group' => '群组列表',
         'group' => 'Group',
     ],
     'fields' => [
@@ -11,6 +11,7 @@ return [
         'type' => '类型',
         'status' => '群属性',
         'open' => '开关',
+        'passedconut' => '通过数',
     ],
     'options' => [
     ],

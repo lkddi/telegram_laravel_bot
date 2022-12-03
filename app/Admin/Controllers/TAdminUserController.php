@@ -32,6 +32,8 @@ class TAdminUserController extends AdminController
                 $filter->equal('id');
 
             });
+            $grid->quickSearch(['group.title', 'user_id', 'username','first_name']);
+
         });
     }
 

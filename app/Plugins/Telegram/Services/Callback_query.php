@@ -55,7 +55,6 @@ class Callback_query
             if ($this->check_userid != $this->userid) return true;
         }
 
-        \Log::info('到这里了');
         $group = Group::where('chat_id', $this->chatid)->first();
         if (!$group || !$group->open) {
             return false;
@@ -107,9 +106,10 @@ class Callback_query
         }
         $group = Group::where('chat_id',$this->chatid)->first();
         if ($group) {
+            $user = $group->user()->where('user_id',$this->userid)->update(['state'=>1]);
             $group->increment('passedconut');
             $group->save();
         }
-        return true;
+        return;
     }
 }
