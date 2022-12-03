@@ -20,10 +20,10 @@ class GroupController extends AdminController
         return Grid::make(new Group(), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('chat_id');
-            $grid->column('title')->substr(1, 10);
+            $grid->column('title')->substr(0, 10);
             $grid->column('username');
             $grid->column('type')->using(['supergroup' => '超级群', 'group' => '普通群', 'private'=>'私密群']);
-            $grid->column('status')->using(['administrator' => '未处理', 2 => '已处理']);
+//            $grid->column('status')->using(['administrator' => '未处理', 2 => '已处理']);
             $grid->column('open')->bool();
             $grid->column('passedconut');
 //            $grid->column('created_at');

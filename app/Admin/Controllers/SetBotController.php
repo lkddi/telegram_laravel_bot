@@ -42,6 +42,11 @@ class SetBotController extends Controller
 
         $form = new Form();
         $form->action(request()->fullUrl());
+        $form->text('form1.APP_NAME', '网站名称')->default(config('app.name'));
+        $form->text('form1.APP_URL', '网站url')->default(config('app.url'));
+        $form->text('form1.APP_ENV', '站点状态')->default(config('app.env','production'));
+        $form->switch('form1.APP_DEBUG', '调试模式')->default(config('app.debug',false));
+//        $form->text('form1.APP_URL', 'Telegram bot Token')->default(config('app.url'));
         $form->text('form1.TELEGRAM_BOT_TOKEN', 'Telegram bot Token')->default(config('telegram.bots.mybot.token'));
         $form->text('form1.TELEGRAM_ADMIN_ID', '你的userid')->default(config('telegram.bots.mybot.admin'));
         $form->text('form1.TELEGRAM_WEBHOOK_URL', '你的userid')->default($url);
