@@ -33,6 +33,7 @@ class DeleMessage extends Command
     {
         $this->workPerSec(function () {
             $messages = Response::where('state', 0)->get();
+            if (!$messages) exit;
             foreach ($messages as $message) {
                 $f = Carbon::now();
                 $d = Carbon::parse($message->created_at)->addSecond($message->deltime);

@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
     'labels' => [
         'TUser' => '群用户列表',
@@ -11,6 +11,7 @@ return [
         'last_name' => '姓',
         'username' => '用户名',
         'state' => '状态',
+        'group' => ['title'=>'群组'],
     ],
     'options' => [
     ],

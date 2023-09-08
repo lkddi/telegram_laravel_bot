@@ -19,14 +19,14 @@ class TAdminUserController extends AdminController
     {
         return Grid::make(new TAdminUser(['group']), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('group.title');
+            $grid->column('group.title')->substr(0, 10);
             $grid->column('user_id');
             $grid->column('first_name');
             $grid->column('last_name');
             $grid->column('username');
             $grid->column('status');
 //            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+            $grid->column('updated_at')->sortable()->datetime();
 
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');

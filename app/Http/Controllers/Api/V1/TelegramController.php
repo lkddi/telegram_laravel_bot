@@ -19,9 +19,9 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 class TelegramController extends Controller
 {
     protected $msg;
-    protected $commands = [];
-    protected $telegramService;
-    protected $webhookService;
+    protected array $commands = [];
+    protected TelegramService $telegramService;
+    protected WebhookService $webhookService;
 
     public function __construct(Request $request)
     {
@@ -34,13 +34,17 @@ class TelegramController extends Controller
 
     public function webhook(Request $request)
     {
-        if (isset($request->message)) return true;
-        if (isset($request->edited_message)) return true;
-
 //        Log::build([
 //            'driver' => 'single',
 //            'path' => storage_path('logs/webhook.log'),
 //        ])->info(json_decode(json_encode($request->input()), true));
+
+        if (isset($request->message)) {
+            Log::info(json_decode(json_encode($request->input()), true));
+            return true;
+        }
+
+        if (isset($request->edited_message)) return true;
 
 //        Telegram::commandsHandler(true);//开启关键字回复
 //        $this->webhookService->add(json_decode(json_encode($request->input())));
@@ -72,7 +76,7 @@ class TelegramController extends Controller
             $calls = new Callback_query();
             $calls->handle($data);
         }
-        if (isset($data['message']) && isset($data['message']['text'])) {
+        if (isset($data['message']['text'])) {
             $keyWord = Str::contains($data['message']['text'], config('keywords.data'));
             if ($keyWord) {
                 $s = new \StdClass();

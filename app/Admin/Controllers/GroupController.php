@@ -27,7 +27,7 @@ class GroupController extends AdminController
             $grid->column('open')->bool();
             $grid->column('passedconut');
 //            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+            $grid->column('updated_at')->sortable()->datetime();
 
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');

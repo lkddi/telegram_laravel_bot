@@ -23,8 +23,6 @@ Route::get('/t',[Test::class,'index']);
 
 Route::post('/<token>/webhook', function () {
 
-
-
 });
 
 

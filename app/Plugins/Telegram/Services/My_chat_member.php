@@ -22,6 +22,7 @@ class My_chat_member
         $GroupService = new GroupService();
 
         $group = $this->formatMessage($data);
+        \Log::info($data);
         if ($group['type'] != 'supergroup') {//非超级群，不进行工作
             $text = $group['title'] . ':普通群，不工作';
             Telegram::sendMessage(['chat_id' => config('telegram.bots.mybot.admin'), 'text' => $text]);
@@ -134,7 +135,7 @@ class My_chat_member
     {
         $group = [];
         $group['type'] = $data['my_chat_member']['chat']['type'];
-        $group['title'] = $data['my_chat_member']['chat']['title'];
+        $group['title'] = $data['my_chat_member']['chat']['title'] ??'';
         if (isset($data['my_chat_member']['chat']['username'])) $group['username'] = $data['my_chat_member']['chat']['username'];
         $group['chat_id'] = $data['my_chat_member']['chat']['id'];
         $group['status'] = $data['my_chat_member']['new_chat_member']['status'];
