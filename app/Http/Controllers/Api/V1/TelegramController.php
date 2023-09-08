@@ -86,7 +86,7 @@ class TelegramController extends Controller
 //                ResponseService::create($s, 60);
             }
         }
-        if (isset($data['edited_message']) && isset($data['edited_message']['text'])) {
+        if (isset($data['edited_message']['text'])) {
             $keyWord = Str::contains($data['edited_message']['text'], config('keywords.data'));
             if ($keyWord) {
                 $s = new \StdClass();

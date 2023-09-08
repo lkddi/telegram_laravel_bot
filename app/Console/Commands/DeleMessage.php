@@ -48,7 +48,7 @@ class DeleMessage extends Command
                 }
             }
         });
-
+        return 0;
     }
 
     function workPerSec($callback)
